@@ -1,2 +1,10 @@
 import "../scss/app.scss";
-// import bootstrap from "bootstrap";
+import 'swiper/swiper-bundle.css';
+
+import Swiper from 'swiper';
+import bootstrap from "bootstrap";
+
+const carouselProject = new Swiper('#carouselProject', {
+    slidesPerView: 4,
+    spaceBetween: 40
+});

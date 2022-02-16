@@ -4,9 +4,21 @@
 
 // 2. Include any default variable overrides here
 $body-bg: #efefef;
+$font-league: 'League Gothic';
+$font-family-base: Arial, "Helvetica Neue", Helvetica, sans-serif;
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "~bootstrap/scss/variables";
+
+$grid-gutter-width: 30px;
+
+$btn-border-radius-sm: 0.625rem;
+
+$line-height-lg: 20px;
+
+$btn-font-size-sm: 0.75rem;
+
+$link-color: #41b9eb;
 
 $font-sizes: (
     1: $h1-font-size,
@@ -16,7 +28,8 @@ $font-sizes: (
     5: $h5-font-size,
     6: $h6-font-size,
     'sm': 0.875rem,
-    'xs': 0.75rem
+    'xs': 0.75rem,
+    'lg': 1.9375rem
 );
 
 $colors: (
@@ -25,7 +38,7 @@ $colors: (
     "purple":     $purple,
     "pink":       $pink,
     "red":        $red,
-    "orange":     $orange,
+    "orange":     #ffa924,
     "yellow":     $yellow,
     "green":      $green,
     "teal":       $teal,
@@ -41,6 +54,7 @@ $colors: (
 // 4. Include any optional Bootstrap CSS as needed
 @import "~bootstrap/scss/utilities";
 
+
 $utilities: map-merge(
   $utilities,
   (
@@ -54,6 +68,17 @@ $utilities: map-merge(
                 "30": 30px
             )
         )
+    ),
+    "color": map-merge(
+        map-get($utilities, "color"),
+        (
+            values: map-merge(
+                map-get(map-get($utilities, "color"), "values"),
+                (
+                    'orange': $orange
+                )
+            )
+        )
     )
   )
 );
@@ -61,11 +86,17 @@ $utilities: map-merge(
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/type";
 @import "~bootstrap/scss/images";
-@import "~bootstrap/scss/buttons";
-@import "~bootstrap/scss/card";
 @import "~bootstrap/scss/containers";
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/helpers";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/forms";
 
 // 5. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "~bootstrap/scss/utilities/api";
