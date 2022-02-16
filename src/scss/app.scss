@@ -1,0 +1,74 @@
+// @import "~bootstrap/scss/bootstrap";
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "~bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+$body-bg: #efefef;
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "~bootstrap/scss/variables";
+
+$font-sizes: (
+    1: $h1-font-size,
+    2: $h2-font-size,
+    3: $h3-font-size,
+    4: $h4-font-size,
+    5: $h5-font-size,
+    6: $h6-font-size,
+    'sm': 0.875rem,
+    'xs': 0.75rem
+);
+
+$colors: (
+    "blue":       $blue,
+    "indigo":     $indigo,
+    "purple":     $purple,
+    "pink":       $pink,
+    "red":        $red,
+    "orange":     $orange,
+    "yellow":     $yellow,
+    "green":      $green,
+    "teal":       $teal,
+    "cyan":       $cyan,
+    "white":      $white,
+    "gray":       #646567,
+    "gray-dark":  $gray-800
+);
+
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+
+// 4. Include any optional Bootstrap CSS as needed
+@import "~bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "padding-x": (
+        responsive: true,
+        property: padding-right padding-left,
+        class: px,
+        values: map-merge(
+            $spacers,
+            (
+                "30": 30px
+            )
+        )
+    )
+  )
+);
+
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/helpers";
+
+// 5. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "~bootstrap/scss/utilities/api";
+
+// 6. custom code
+@import './custom';
