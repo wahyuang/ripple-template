@@ -11,6 +11,8 @@ module.exports = {
 	},
 	devServer: {
 		static: './dist',
+		port: 8080,
+		watchFiles: path.join(__dirname, 'src')
 	},
 	devtool: 'source-map',
 	module: {
@@ -37,6 +39,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
+			filename: 'index.html'
 		})
 	]
 }
