@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
 	entry: [
@@ -20,18 +21,39 @@ module.exports = {
 			{
 				test: /\.(scss|css)$/,
 				use: [
-					"style-loader",
-					"css-loader",
-					{
-						loader: "postcss-loader",
-						options: {
-							postcssOptions: {
-								plugins: ["autoprefixer"],
-							}
-						}
-					},
-					'resolve-url-loader',
-					"sass-loader"
+					// MiniCssExtractPlugin.loader,
+					// "style-loader",
+					// "css-loader",
+					// {
+					// 	loader: "postcss-loader",
+					// 	options: {
+					// 		postcssOptions: {
+					// 			plugins: ["autoprefixer"],
+					// 		}
+					// 	}
+					// },
+					// 'resolve-url-loader',
+					// "sass-loader",
+					MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 2,
+                            sourceMap: true,
+                            url: false,
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    'autoprefixer',
+                                ]
+                            }
+                        }
+                    },
+                    'sass-loader'
 				]
 			}
 		]
@@ -40,6 +62,10 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
 			filename: 'index.html'
-		})
+		}),
+		new MiniCssExtractPlugin({
+            filename: "css/[name].css",
+            chunkFilename: "[id].css"
+        })
 	]
 }
