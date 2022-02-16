@@ -96,7 +96,7 @@
 }
 
 .newsletter-input-group {
-    input[type=text] {
+    .newsletter-input-text {
         @extend .fs-xs;
 
         height: 47px;
